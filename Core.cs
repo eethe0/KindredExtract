@@ -43,6 +43,9 @@ internal static class Core
 
 	public static PrefabService Prefabs { get; internal set; }
 
+    public static EcsSystemHierarchyService EcsSystemHierarchyService { get; } = new(Log);
+    public static EcsSystemDumpService EcsSystemDumpService { get; } = new(EcsSystemHierarchyService, Log);
+
 
 
     static MonoBehaviour monoBehaviour;

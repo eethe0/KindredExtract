@@ -2,7 +2,6 @@
 using ProjectM.Shared;
 using ProjectM.UI;
 using Stunlock.Core;
-using Stunlock.Localization;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -346,5 +345,13 @@ namespace KindredExtract.Commands
             var json = JsonSerializer.Serialize(prefabNames);
             File.WriteAllText($"PrefabNames.json", json);
         }
+
+        [Command("systems", "s", description: "Dumps ECS system update hierarchies to files (per world)", adminOnly: true)]
+        public static void DumpSystemsUpdateTrees(ChatCommandContext ctx)
+        {
+            var dir = Core.EcsSystemDumpService.DumpSystemsUpdateTrees();
+            ctx.Reply($"Dumped system hierarchy files to folder {dir}");
+        }
+        
     }
 }
