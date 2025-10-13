@@ -102,7 +102,7 @@ namespace KindredExtract.Commands
                 {
                     var entityQuery = (EntityQuery)field.GetValue(system);
                     sb.AppendLine($"  EntityQuery Field: {field.Name}");
-                    if (!entityQuery.IsCacheValid)
+                    if (entityQuery == default)
                     {
                         sb.AppendLine("    Invalid to use");
                         continue;
@@ -124,7 +124,7 @@ namespace KindredExtract.Commands
                 {
                     var entityQuery = (EntityQuery)property.GetValue(system);
                     sb.AppendLine($"  EntityQuery Property: {property.Name}");
-                    if (!entityQuery.IsCacheValid)
+                    if (entityQuery == default)
                     {
                         sb.AppendLine("    Invalid to use");
                         continue;
